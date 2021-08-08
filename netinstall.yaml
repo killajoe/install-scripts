@@ -123,11 +123,20 @@
     - tldr
 - name: "Firefox language package"
   description: "add language package and do not let install fail"
-  hidden: true
-  selected: true
+  hidden: false
+  selected: false
   critical: false
   packages:
     - firefox-i18n-$LOCALE
+    - firefox-i18n-$LANGUAGE
+- name: "LTS Kernel in addition"
+  description: "adding Long Term Supported Kernel in addition to main one"
+  hidden: false
+  selected: false
+  critical: false
+  packages:
+    - linux-lts
+    - linux-lts-headers
 - name: "XFCE4-Desktop"
   description: "XFCE4 - lightweight desktop fast and low on system resources, visually appealing and user friendly."
   hidden: false
