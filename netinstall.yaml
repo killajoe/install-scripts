@@ -9,6 +9,7 @@
     - linux-headers
     - linux-firmware
     - pacman-contrib
+    - downgrade
     - xf86-video-vesa
     - xorg-server
     - xorg-xinit
@@ -122,7 +123,7 @@
     - inxi
     - tldr
 - name: "Firefox language package"
-  description: "add language package and do not let install fail"
+  description: "add firefox language pack if possible"
   hidden: false
   selected: true
   critical: false
@@ -280,9 +281,6 @@
     - nitrogen
     - rofi
     - xbindkeys
-    - pulseaudio
-    - paprefs
-    - pavucontrol
     - scrot
     - xorg-xdpyinfo
     - dex
