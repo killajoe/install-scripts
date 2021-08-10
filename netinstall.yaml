@@ -142,46 +142,55 @@
   hidden: false
   selected: false
   critical: true
-  packages:
-    - name: endeavouros-xfce4
-      description: EndeavourOS XFCE4 theming (unselect to install vanilla)
-    - xfce4
-    - parole
-    - ristretto
-    - thunar-archive-plugin
-    - thunar-media-tags-plugin		
-    - xfce4-battery-plugin	
-    - xfce4-datetime-plugin		
-    - xfce4-mount-plugin	
-    - xfce4-netload-plugin	
-    - xfce4-notifyd	
-    - xfce4-pulseaudio-plugin
-    - xfce4-screensaver
-    - xfce4-screenshooter
-    - xfce4-taskmanager
-    - xfce4-wavelan-plugin	
-    - xfce4-weather-plugin	
-    - xfce4-whiskermenu-plugin
-    - xfce4-xkb-plugin
-    - file-roller
-    - gvfs
-    - gvfs-mtp
-    - gvfs-afc
-    - gvfs-gphoto2
-    - gvfs-nfs
-    - gvfs-smb
-    - network-manager-applet
-    - xed
-    - galculator
-    - lightdm
-    - lightdm-gtk-greeter
-    - lightdm-gtk-greeter-settings
-    - arc-gtk-theme-eos
-    - arc-x-icons-theme
-    - capitaine-cursors
-    - endeavouros-xfce4-terminal-colors
-    - xdg-user-dirs-gtk
-    - meld
+  expanded: true
+  subgroups:
+      - name: "EndeavourOS theming"
+        description: "EndeavourOS XFCE4 theming (unselect to install vanilla"
+        selected: false
+        packages:
+            - endeavouros-xfce4
+      - name: "apps"
+        description: "XFCE4 default packages"
+        selected: false
+        immutable: false
+        packages:
+         - xfce4
+         - parole
+         - ristretto
+         - thunar-archive-plugin
+         - thunar-media-tags-plugin		
+         - xfce4-battery-plugin	
+         - xfce4-datetime-plugin		
+         - xfce4-mount-plugin	
+         - xfce4-netload-plugin	
+         - xfce4-notifyd	
+         - xfce4-pulseaudio-plugin
+         - xfce4-screensaver
+         - xfce4-screenshooter
+         - xfce4-taskmanager
+         - xfce4-wavelan-plugin	
+         - xfce4-weather-plugin	
+         - xfce4-whiskermenu-plugin
+         - xfce4-xkb-plugin
+         - file-roller
+         - gvfs
+         - gvfs-mtp
+         - gvfs-afc
+         - gvfs-gphoto2
+         - gvfs-nfs
+         - gvfs-smb
+         - network-manager-applet
+         - xed
+         - galculator
+         - lightdm
+         - lightdm-gtk-greeter
+         - lightdm-gtk-greeter-settings
+         - arc-gtk-theme-eos
+         - arc-x-icons-theme
+         - capitaine-cursors
+         - endeavouros-xfce4-terminal-colors
+         - xdg-user-dirs-gtk
+         - meld
 - name: "KDE-Desktop"
   description: "KDE-Plasma Desktop - Simple by default, powerful when needed."
   hidden: false
