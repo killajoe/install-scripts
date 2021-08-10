@@ -462,12 +462,13 @@
 - name: "maingroup"
   description: "default groupp for DE/WM"
   hidden: false
+  selected: false
+  critical: true
   subgroups:
       - name: "WM"
           description: "needed WM packages"
           selected: true
           critical: true
-          immutable: true
           packages:
             - gnome
             - gnome-extra
@@ -475,7 +476,6 @@
           description: "optional apps to be installed"
           selected: false
           critical: true
-          immutable: false
           packages:
             - chromium
             - xed
