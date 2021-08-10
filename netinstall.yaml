@@ -201,6 +201,10 @@
         critical: false
         packages:
             - endeavouros-xfce4
+            - arc-gtk-theme-eos
+            - arc-x-icons-theme
+            - capitaine-cursors
+            - endeavouros-xfce4-terminal-colors
       - name: "XFCE4 Desktop"
         description: "XFCE4 default packages"
         selected: false
@@ -236,10 +240,6 @@
          - lightdm
          - lightdm-gtk-greeter
          - lightdm-gtk-greeter-settings
-         - arc-gtk-theme-eos
-         - arc-x-icons-theme
-         - capitaine-cursors
-         - endeavouros-xfce4-terminal-colors
          - xdg-user-dirs-gtk
          - meld
 - name: "KDE-Desktop"
@@ -314,6 +314,11 @@
         critical: false
         packages:
           - endeavouros-i3wm
+          - arc-gtk-theme-eos
+          - arc-x-icons-theme
+          - capitaine-cursors
+          - gtk-engine-murrine
+          - endeavouros-xfce4-terminal-colors
       - name: "i3-wm packages"
         description: "i3wm default packages"
         selected: false
@@ -342,7 +347,6 @@
           - gvfs-nfs
           - gvfs-smb
           - xfce4-terminal
-          - endeavouros-xfce4-terminal-colors
           - lightdm
           - lightdm-gtk-greeter
           - lightdm-gtk-greeter-settings
@@ -359,12 +363,8 @@
           - jq
           - feh
           - dunst
-          - arc-gtk-theme-eos
-          - arc-x-icons-theme
-          - capitaine-cursors
           - galculator
           - celluloid
-          - gtk-engine-murrine
           - numlockx
           - meld
 - name: "MATE-Desktop"
