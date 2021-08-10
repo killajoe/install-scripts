@@ -18,7 +18,6 @@
       - name: "X-system"
         description: "default X-system"
         selected: true
-        immutable: false
         packages:
            - xorg-server
            - xorg-xinit
@@ -30,9 +29,8 @@
            - xf86-video-fbdev
            - libwnck3
       - name: "GPU drivers"
-        description: "default X-system"
+        description: "X-system drivers"
         selected: true
-        immutable: false
         packages:
           - xf86-video-amdgpu
           - xf86-video-ati
@@ -40,7 +38,6 @@
       - name: "Network"
         description: "Network apps drivers and tools"
         selected: true
-        immutable: false
         packages:
           - b43-fwcutter
           - broadcom-wl-dkms
@@ -76,10 +73,9 @@
           - xl2tpd
           - dialog
           - dnsmasq
-      - name: "package management"
-        description: "package tools"
+      - name: "packages management"
+        description: "packages tools"
         selected: true
-        immutable: false
         packages:
           - reflector
           - yay
@@ -88,7 +84,6 @@
       - name: "desktop integration"
         description: "useful helper tools and libs for desktop usage"
         selected: true
-        immutable: false
         packages:
           - xdg-utils
           - xdg-user-dirs
@@ -106,17 +101,15 @@
           - gst-plugin-pipewire
           - libdvdcss
       - name: "filesystem"
-        description: "filesystem tools and aps"
+        description: "filesystem tools and apps"
         selected: true
-        immutable: false
         packages:
           - smartmontools
           - solid
           - haveged
       - name: "fonts"
-        description: "default EndeavourOS font selection"
+        description: "EndeavourOS font selection"
         selected: true
-        immutable: false
         packages:
           - ttf-dejavu
           - ttf-liberation
@@ -131,7 +124,6 @@
       - name: "audio"
         description: "audio handling tools apps and libs"
         selected: true
-        immutable: false
         packages:
           - alsa-utils
           - alsa-plugins
@@ -142,7 +134,6 @@
       - name: "hardware"
         description: "hardware support libs and firmware"
         selected: true
-        immutable: false
         packages:
           - sof-firmware
           - efibootmgr
@@ -153,14 +144,12 @@
       - name: "power"
         description: "powermanagement support"
         selected: true
-        immutable: false
         packages:
           - tlp
           - upower
       - name: "EndeavourOS Apps"
         description: "EndeavourOS tools and applications"
         selected: true
-        immutable: false
         packages:
           - yad-eos
           - endeavouros-theming
@@ -172,10 +161,9 @@
           - eos-log-tool
           - keyserver-rank
           - grub-tools
-      - name: "default applications selection"
-        description: "generel tools and applications"
+      - name: "EndeavourOS applications selection"
+        description: "general tools and applications"
         selected: true
-        immutable: false
         packages:
           - neofetch
           - glances
@@ -188,7 +176,7 @@
           - firefox
 - name: "Firefox language package"
   description: "add firefox language pack if possible"
-  hidden: false
+  hidden: true
   selected: true
   critical: false
   packages:
@@ -197,7 +185,7 @@
   description: "adding Long Term Supported Kernel in addition to main one"
   hidden: false
   selected: false
-  critical: false
+  critical: true
   packages:
     - linux-lts-headers
     - linux-lts
@@ -208,8 +196,9 @@
   critical: true
   subgroups:
       - name: "EndeavourOS theming"
-        description: "EndeavourOS XFCE4 theming (unselect to install vanilla"
+        description: "EndeavourOS XFCE4 theming (unselect to install vanilla)"
         selected: false
+        critical: false
         packages:
             - endeavouros-xfce4
       - name: "XFCE4 Desktop"
@@ -283,7 +272,7 @@
     - kate
     - plasma-disks
 - name: "GNOME-Desktop"
-  description: "GNOME Desktop - designed to put you in control and get things done. "
+  description: "GNOME Desktop - designed to put you in control and get things done."
   hidden: false
   selected: false
   critical: true
@@ -320,14 +309,14 @@
   critical: true
   subgroups:
       - name: "EndeavourOS theming"
-        description: "EndeavourOS XFCE4 theming (unselect to install vanilla"
+        description: "EndeavourOS XFCE4 theming (unselect to install vanilla)"
         selected: false
+        critical: false
         packages:
           - endeavouros-i3wm
       - name: "XFCE4 Desktop"
         description: "i3wm default packages"
         selected: false
-        immutable: false
         packages:
           - i3-gaps
           - i3blocks
