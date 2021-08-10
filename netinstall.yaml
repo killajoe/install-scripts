@@ -314,7 +314,7 @@
         critical: false
         packages:
           - endeavouros-i3wm
-      - name: "XFCE4 Desktop"
+      - name: "i3-wm packages"
         description: "i3wm default packages"
         selected: false
         packages:
