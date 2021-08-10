@@ -461,6 +461,7 @@
     - espeak-ng
 - name: "maingroup"
   description: "default groupp for DE/WM"
+  expanded: true
   hidden: false
   selected: false
   critical: true
