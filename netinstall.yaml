@@ -466,16 +466,16 @@
   critical: true
   subgroups:
       - name: "WM"
-          description: "needed WM packages"
-          selected: true
-          critical: true
-          packages:
+        description: "needed WM packages"
+        selected: true
+        immutable: true
+        packages:
             - gnome
             - gnome-extra
       - name: "apps"
-          description: "optional apps to be installed"
-          selected: false
-          critical: true
-          packages:
+        description: "optional apps to be installed"
+        selected: false
+        immutable: false
+        packages:
             - chromium
             - xed
