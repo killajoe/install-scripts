@@ -143,7 +143,8 @@
   selected: false
   critical: true
   packages:
-    - endeavouros-xfce4
+    - name: endeavouros-xfce4
+      description: EndeavourOS XFCE4 theming (unselect to install vanilla)
     - xfce4
     - parole
     - ristretto
@@ -247,7 +248,8 @@
   selected: false
   critical: true
   packages:
-    - endeavouros-i3wm
+    - name: endeavouros-i3wm
+      description: EndeavourOS i3wm theming (unselect to install vanilla)
     - i3-gaps
     - i3blocks
     - i3lock
