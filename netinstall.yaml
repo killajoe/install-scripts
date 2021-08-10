@@ -462,14 +462,16 @@
 - name: "maingroup"
       description: "default groupp for DE/WM"
       hidden: false
-      selected: true
       critical: true
-      immutable: true
-      packages:
-        - gnome
-        - gnome-extra
       subgroups:
-        - name: "apps"
+      - name: "WM"
+          description: "needed WM packages"
+          selected: true
+          immutable: true
+          packages:
+          - gnome
+          - gnome-extra
+      - name: "apps"
           description: "optional apps to be installed"
           selected: false
           immutable: false
