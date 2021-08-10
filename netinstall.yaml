@@ -460,20 +460,21 @@
     - mousetweaks
     - espeak-ng
 - name: "maingroup"
-      description: "default groupp for DE/WM"
-      hidden: false
-      critical: true
-      subgroups:
+  description: "default groupp for DE/WM"
+  hidden: false
+  subgroups:
       - name: "WM"
           description: "needed WM packages"
           selected: true
+          critical: true
           immutable: true
           packages:
-          - gnome
-          - gnome-extra
+            - gnome
+            - gnome-extra
       - name: "apps"
           description: "optional apps to be installed"
           selected: false
+          critical: true
           immutable: false
           packages:
             - chromium
