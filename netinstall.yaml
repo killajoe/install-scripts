@@ -459,3 +459,20 @@
     - orca
     - mousetweaks
     - espeak-ng
+- name: "maingroup"
+      description: "default groupp for DE/WM"
+      hidden: false
+      selected: true
+      critical: true
+      immutable: true
+      packages:
+        - gnome
+        - gnome-extra
+      subgroups:
+        - name: "apps"
+          description: "optional apps to be installed"
+          selected: false
+          immutable: false
+          packages:
+            - chromium
+            - xed
