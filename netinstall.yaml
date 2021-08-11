@@ -430,6 +430,7 @@
   critical: true
   packages:
     - budgie-desktop
+    - budgie-extras
     - budgie-desktop-view
     - budgie-screensaver
     - gedit
