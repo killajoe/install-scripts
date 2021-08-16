@@ -116,7 +116,7 @@ _clean_archiso(){
         /etc/systemd/system/getty@tty1.service.d/autologin.conf
         /etc/systemd/system/multi-user.target.wants/{vboxservice.service,vmtoolsd.service,vmware-vmblock-fuse.service}
         /etc/systemd/journald.conf.d
-        /etc/systemd/system/logind.conf.d
+        /etc/systemd/logind.conf.d
         /root/{.automated_script.sh,.zlogin}
         /etc/mkinitcpio-archiso.conf
         /etc/initcpio
