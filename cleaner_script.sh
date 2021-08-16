@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Made by fernandomaroto for EndeavourOS and Portergos
-
 # Adapted from AIS. An excellent bit of code!
+# ISO-NEXT specific cleanup removals and additions (08-2021) @killajoe and @manuel
 
 if [ -f /tmp/chrootpath.txt ]
 then 
