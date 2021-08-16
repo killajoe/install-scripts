@@ -123,6 +123,7 @@ _clean_archiso(){
         /etc/udev/rules.d/81-dhcpcd.rules
         /usr/bin/{calamares_switcher,cleaner_script.sh}
         /home/$NEW_USER/.config/qt5ct
+        /home/$NEW_USER/.config/Kvantum
         /home/$NEW_USER/{.xinitrc,.xsession,.xprofile,.wget-hsts,.screenrc,.zshrc,.ICEauthority}
         /root/{.xinitrc,.xsession,.xprofile}
         /etc/skel/{.xinitrc,.xsession,.xprofile}
