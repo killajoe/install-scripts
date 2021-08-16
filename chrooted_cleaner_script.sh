@@ -112,6 +112,9 @@ _clean_archiso(){
         /etc/systemd/system/{choose-mirror.service,getty@tty1.service.d}
         /etc/systemd/scripts/choose-mirror
         /etc/systemd/system/getty@tty1.service.d/autologin.conf
+        /etc/systemd/system/multi-user.target.wants/{vboxservice.service,vmtoolsd.service,vmware-vmblock-fuse.service}
+        /etc/systemd/system/journald.conf.d
+        /etc/systemd/system/logind.conf.d
         /root/{.automated_script.sh,.zlogin}
         /etc/mkinitcpio-archiso.conf
         /etc/initcpio
