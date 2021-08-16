@@ -4,6 +4,7 @@
 # Made by @fernandomaroto and @manuel 
 # Any failed command will just be skiped, error message may pop up but won't crash the install process
 # Net-install creates the file /tmp/run_once in live environment (need to be transfered to installed system) so it can be used to detect install option
+# ISO-NEXT specific cleanup removals and additions (08-2021) @killajoe and @manuel
 
 if [ -f /tmp/new_username.txt ]
 then
