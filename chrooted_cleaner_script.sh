@@ -108,6 +108,7 @@ _clean_archiso(){
 
     local _files_to_remove=(                               
         /etc/sudoers.d/g_wheel
+        /etc/ssh/sshd_config
         /var/lib/NetworkManager/NetworkManager.state
         /etc/systemd/system/{choose-mirror.service,getty@tty1.service.d}
         /etc/systemd/scripts/choose-mirror
@@ -177,6 +178,7 @@ _clean_offline_packages(){
     xcompmgr
     memtest86+
     mkinitcpio-archiso
+    openssh
 )
     local xx
     # @ does one by one to avoid errors in the entire process
