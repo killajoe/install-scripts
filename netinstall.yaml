@@ -298,6 +298,8 @@
     - gnome-disk-utility
     - gnome-themes-extra
     - adwaita-icon-theme
+    - arc-gtk-theme-eos
+    - arc-x-icons-theme
     - xdg-user-dirs-gtk
     - gvfs
     - gvfs-mtp
@@ -411,6 +413,8 @@
     - lightdm
     - lightdm-gtk-greeter
     - lightdm-gtk-greeter-settings
+    - arc-gtk-theme-eos
+    - arc-x-icons-theme
     - nemo-fileroller 	
     - nemo-image-converter
     - nemo-preview	
