@@ -365,9 +365,9 @@
           - picom
           - xed
           - jq
-          - feh
           - dunst
           - galculator
+          - gthumb
           - celluloid
           - numlockx
           - meld
@@ -404,7 +404,7 @@
     - cinnamon-translations
     - gnome-terminal
     - gnome-system-monitor
-    - gpicview
+    - gthumb
     - celluloid
     - x-apps
     - file-roller
@@ -438,6 +438,9 @@
     - budgie-desktop-view
     - budgie-screensaver
     - gedit
+    - evince
+    - eog
+    - totem
     - gnome-terminal
     - gnome-control-center
     - gnome-keyring
@@ -485,7 +488,8 @@
     - pavucontrol-qt
     - xscreensaver
     - print-manager
-    - smplayer
+    - lximage
+    - baka-mplayer
     - gvfs
     - gvfs-mtp
     - lxqt-archiver
