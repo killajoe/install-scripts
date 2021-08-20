@@ -290,6 +290,9 @@
     - nautilus
     - nautilus-sendto
     - sushi
+    - evince
+    - totem
+    - eog
     - gnome-nettool
     - gnome-usage
     - gnome-disk-utility
