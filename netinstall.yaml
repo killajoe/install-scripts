@@ -174,6 +174,7 @@
           - inxi
           - tldr
           - firefox
+          - meld
 - name: "Firefox language package"
   description: "Add firefox language pack if possible"
   hidden: true
@@ -241,7 +242,6 @@
          - lightdm-gtk-greeter
          - lightdm-gtk-greeter-settings
          - xdg-user-dirs-gtk
-         - meld
 - name: "KDE-Desktop"
   description: "KDE-Plasma Desktop - Simple by default, powerful when needed."
   hidden: false
@@ -269,7 +269,6 @@
     - dragon
     - elisa
     - print-manager
-    - meld
     - kate
     - plasma-disks
 - name: "GNOME-Desktop"
@@ -307,7 +306,6 @@
     - gvfs-gphoto2
     - gvfs-nfs
     - gvfs-smb
-    - meld
 - name: "i3 Window Manager"
   description: "i3 tiling window manager, primarily targeted at developers and advanced users."
   hidden: false
@@ -372,7 +370,6 @@
           - gthumb
           - celluloid
           - numlockx
-          - meld
 - name: "MATE-Desktop"
   description: "MATE Desktop - the continuation of GNOME 2"
   hidden: false
@@ -395,7 +392,6 @@
     - gvfs-gphoto2
     - gvfs-nfs
     - gvfs-smb
-    - meld
 - name: "Cinnamon-Desktop"
   description: "Cinnamon Desktop - advanced innovative features and a traditional user experience."
   hidden: false
@@ -430,7 +426,6 @@
     - xdg-user-dirs-gtk
     - arc-gtk-theme-eos
     - arc-x-icons-theme
-    - meld
 - name: "Budgie-Desktop"
   description: "Budgie - I Tawt I Taw A Purdy Desktop"
   hidden: false
@@ -470,7 +465,6 @@
     - gvfs-gphoto2
     - gvfs-nfs
     - gvfs-smb
-    - meld
 - name: "LXQT-Desktop"
   description: "The Lightweight Qt Desktop Environment."
   hidden: false
@@ -499,7 +493,6 @@
     - qt5-translations
     - kio-fuse
     - audiocd-kio
-    - meld
 - name: "Printing-Support"
   description: "Support for printing (Cups)"
   hidden: false
