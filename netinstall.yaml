@@ -269,7 +269,7 @@
     - dragon
     - elisa
     - print-manager
-    - kdiff3
+    - meld
     - kate
     - plasma-disks
 - name: "GNOME-Desktop"
@@ -307,7 +307,7 @@
     - gvfs-gphoto2
     - gvfs-nfs
     - gvfs-smb
-    - diffuse
+    - meld
 - name: "i3 Window Manager"
   description: "i3 tiling window manager, primarily targeted at developers and advanced users."
   hidden: false
@@ -499,7 +499,7 @@
     - qt5-translations
     - kio-fuse
     - audiocd-kio
-    - kdiff3
+    - meld
 - name: "Printing-Support"
   description: "Support for printing (Cups)"
   hidden: false
