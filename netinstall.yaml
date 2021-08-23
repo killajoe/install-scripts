@@ -81,6 +81,7 @@
           - yay
           - pacman-contrib
           - downgrade
+          - rebuild-detector
       - name: "desktop integration"
         description: "Useful helper tools and libs for desktop usage"
         selected: true
