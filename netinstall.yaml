@@ -202,7 +202,7 @@
         selected: false
         critical: false
         packages:
-            - endeavouros-xfce4
+            - endeavouros-skel-xfce4
             - arc-gtk-theme-eos
             - arc-x-icons-theme
             - capitaine-cursors
@@ -318,7 +318,7 @@
         selected: false
         critical: false
         packages:
-          - endeavouros-i3wm
+          - endeavouros-skel-i3wm
           - arc-gtk-theme-eos
           - arc-x-icons-theme
           - capitaine-cursors
