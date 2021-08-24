@@ -4,6 +4,7 @@
 # Made by @fernandomaroto and @manuel 
 # Any failed command will just be skiped, error message may pop up but won't crash the install process
 # Net-install creates the file /tmp/run_once in live environment (need to be transfered to installed system) so it can be used to detect install option
+# ISO-NEXT specific cleanup removals and additions (08-2021) @killajoe and @manuel
 
 if [ -f /tmp/new_username.txt ]
 then
@@ -86,21 +87,11 @@ _vmware() {
     esac
 }
 
-_common_systemd(){
-    local _systemd_enable=(NetworkManager vboxservice cups avahi-daemon systemd-timesyncd tlp gdm lightdm sddm)   
-    local _systemd_disable=(multi-user.target pacman-init)           
-    local srv
-
-    for srv in ${_systemd_enable[*]};  do systemctl enable  -f $srv; done
-    for srv in ${_systemd_disable[*]}; do systemctl disable -f $srv; done
-}
-
 _sed_stuff(){
 
     # Journal for offline. Turn volatile (for iso) into a real system.
     sed -i 's/volatile/auto/g' /etc/systemd/journald.conf 2>>/tmp/.errlog
     sed -i 's/.*pam_wheel\.so/#&/' /etc/pam.d/su
-
 }
 
 _os_lsb_release(){
@@ -118,16 +109,21 @@ _clean_archiso(){
 
     local _files_to_remove=(                               
         /etc/sudoers.d/g_wheel
+        /etc/ssh/sshd_config
         /var/lib/NetworkManager/NetworkManager.state
-        /etc/systemd/system/{choose-mirror.service,pacman-init.service,etc-pacman.d-gnupg.mount,getty@tty1.service.d}
+        /etc/systemd/system/{choose-mirror.service,getty@tty1.service.d}
         /etc/systemd/scripts/choose-mirror
         /etc/systemd/system/getty@tty1.service.d/autologin.conf
+        /etc/systemd/system/multi-user.target.wants/{vboxservice.service,vmtoolsd.service,vmware-vmblock-fuse.service}
+        /etc/systemd/journald.conf.d
+        /etc/systemd/logind.conf.d
         /root/{.automated_script.sh,.zlogin}
         /etc/mkinitcpio-archiso.conf
         /etc/initcpio
         /etc/udev/rules.d/81-dhcpcd.rules
         /usr/bin/{calamares_switcher,cleaner_script.sh}
         /home/$NEW_USER/.config/qt5ct
+        /home/$NEW_USER/.config/Kvantum
         /home/$NEW_USER/{.xinitrc,.xsession,.xprofile,.wget-hsts,.screenrc,.zshrc,.ICEauthority}
         /root/{.xinitrc,.xsession,.xprofile}
         /etc/skel/{.xinitrc,.xsession,.xprofile}
@@ -146,26 +142,13 @@ _clean_archiso(){
 _clean_offline_packages(){
 
     local _packages_to_remove=( 
-    darkhttpd
-    grml-zsh-config
-    irssi
-    lftp
-    kitty-terminfo
-    lynx
-    vim
-    termite-terminfo
-    transmission-gtk
     gparted
-    openssh
-    gnome-keyring
-    gtk2
-    hardinfo
-    mc
     grsync
-    gftp
     qt5ct
     qt5-base
+    kvantum-qt5
     calamares_current
+    calamares_config_next
     arch-install-scripts
     qt5-svg
     qt5-webengine
@@ -174,9 +157,6 @@ _clean_offline_packages(){
     kcrash
     qt5-declarative
     squashfs-tools
-    ddrescue
-    dd_rescue
-    testdisk
     qt5-tools
     kparts
     polkit-qt5
@@ -196,14 +176,11 @@ _clean_offline_packages(){
     kcoreaddons
     kconfig
     clonezilla
-    partclone
-    partimage
     ckbcomp
-    gnome-boxes
     xcompmgr
-    epiphany
     memtest86+
     mkinitcpio-archiso
+    openssh
 )
     local xx
     # @ does one by one to avoid errors in the entire process
@@ -215,10 +192,38 @@ _clean_offline_packages(){
 _endeavouros(){
 
 
-    sed -i "/if/,/fi/"'s/^/#/' /root/.bash_profile
+    [ -r /root/.bash_profile ] && sed -i "/if/,/fi/"'s/^/#/' /root/.bash_profile
     sed -i "/if/,/fi/"'s/^/#/' /home/$NEW_USER/.bash_profile
 
 }
+
+_fix_offline_mirrorlist() {
+    # For offline install only!
+    # If a mirrorlist could not be generated because of no connection, use the following.
+
+    /usr/bin/cat <<EOF > /etc/pacman.d/mirrorlist
+### This mirrorlist was written during install at $(date -u +%Y-%m-%d).
+###
+### Note that the mirrors were not ranked, so you may get better mirrorlist
+### by ranking with e.g. program 'reflector-simple'.
+
+## Germany
+Server = http://mirror.f4st.host/archlinux/\$repo/os/\$arch
+Server = https://mirror.f4st.host/archlinux/\$repo/os/\$arch
+
+## United States
+Server = http://arch.mirror.constant.com/\$repo/os/\$arch
+Server = https://arch.mirror.constant.com/\$repo/os/\$arch
+
+## Germany
+Server = https://mirror.pseudoform.org/\$repo/os/\$arch
+
+## United States
+Server = http://mirror.lty.me/archlinux/\$repo/os/\$arch
+Server = https://mirror.lty.me/archlinux/\$repo/os/\$arch
+EOF
+}
+
 
 _check_install_mode(){
 
@@ -231,10 +236,11 @@ _check_install_mode(){
     case "$INSTALL_OPTION" in
         OFFLINE_MODE)
                 _clean_archiso
-                chown -R $NEW_USER:users /home/$NEW_USER/.bashrc
+                chown $NEW_USER:$NEW_USER /home/$NEW_USER/.bashrc
                 _sed_stuff
                 _clean_offline_packages
-                _check_internet_connection && update-mirrorlist
+                # _check_internet_connection && _fix_offline_mirrorlist
+                # _check_internet_connection && update-mirrorlist
             ;;
 
         ONLINE_MODE)
@@ -369,26 +375,6 @@ _clean_up(){
     # keep r8168 package but blacklist it; r8169 will be used by default
     xx=/usr/lib/modprobe.d/r8168.conf
     test -r $xx && sed -i $xx -e 's|r8169|r8168|'
-
-    # delete some files after offline install
-    rm -rf /usr/share/calamares
-
-    # delete unnecessary DM configs
-    #if (! _is_pkg_installed sddm) ; then
-    #rm -rf /etc/sddm.conf.d
-    #fi
-    #if (! _is_pkg_installed lightdm) ; then
-    #rm -rf /etc/lightdm
-    #fi
-}
-
-_desktop_openbox(){
-    # openbox configs here
-    # Note: variable 'desktop' from '_another_case' is visible here too if more details are needed.
-    
-    mmaker -vf OpenBox3 # for root
-    sudo -H -u $NEW_USER bash -c 'mmaker -vf OpenBox3' # for normal user
-
 }
 
 _desktop_i3(){
@@ -414,7 +400,6 @@ _de_wm_config(){
     local desktops_lowercase="$(ls -1 /usr/share/xsessions/*.desktop | tr '[:upper:]' '[:lower:]' | sed -e 's|\.desktop$||' -e 's|^/usr/share/xsessions/||')"
     local desktop
     local i3_added=no # break for loop
-    local openbox_added=no # break for loop
 
     for desktop in $desktops_lowercase ; do
         case "$desktop" in
@@ -422,12 +407,6 @@ _de_wm_config(){
                 if [ "$i3_added" = "no" ] ; then
                     i3_added=yes
                     _desktop_i3 
-                fi
-                ;;
-            openbox*)
-                if [ "$openbox_added" = "no" ] ; then
-                    openbox_added=yes
-                    _desktop_openbox
                 fi
                 ;;
         esac
@@ -474,6 +453,11 @@ _xorg_configs(){
     fi
 }
 
+_change_config_options(){
+    #set lightdm.conf to logind-check-graphical=true
+    sed -i 's?#logind-check-graphical=false?logind-check-graphical=true?' /etc/lightdm/lightdm.conf
+}
+
 _remove_gnome_software(){
     pacman -Rsn --noconfirm gnome-software
 }
@@ -485,16 +469,16 @@ _remove_discover(){
 ########################################
 
 _check_install_mode
-_common_systemd
 _endeavouros
 #_os_lsb_release
 _vbox
 _vmware
+_change_config_options
 _remove_gnome_software
 _remove_discover
-_de_wm_config
+#_de_wm_config
 #_setup_personal
 _xorg_configs
 _clean_up
 
-rm -rf /usr/bin/{calamares_switcher,cleaner_script.sh,chrooted_cleaner_script.sh,calamares_for_testers,rank_pacman_key.sh,pacstrap_calamares,update-mirrorlist,prepare-calamares}
+rm -rf /usr/bin/{cleaner_script.sh,chrooted_cleaner_script.sh,calamares_for_testers,pacstrap_calamares,update-mirrorlist,prepare-calamares}
