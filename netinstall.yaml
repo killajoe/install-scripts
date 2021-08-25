@@ -318,6 +318,7 @@
       - name: "EndeavourOS theming"
         description: "EndeavourOS XFCE4 theming (unselect to install vanilla)"
         selected: false
+        expanded: true
         critical: false
         packages:
           - endeavouros-skel-i3wm
@@ -329,6 +330,7 @@
       - name: "i3-wm packages"
         description: "i3wm default packages"
         selected: false
+        expanded: false
         packages:
           - i3-gaps
           - i3blocks
