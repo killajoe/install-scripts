@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Made by fernandomaroto for EndeavourOS and Portergos
+
 # Adapted from AIS. An excellent bit of code!
-# ISO-NEXT specific cleanup removals and additions (08-2021) @killajoe and @manuel
 
 if [ -f /tmp/chrootpath.txt ]
 then 
@@ -34,7 +34,6 @@ arch_chroot(){
 
 cp -rf /etc/skel/.bashrc /tmp/$chroot_path/home/$NEW_USER/.bashrc
 cp -rf /etc/environment /tmp/$chroot_path/etc/environment
-#cp -rf /home/liveuser/.gnupg/gpg.conf /tmp/$chroot_path/etc/pacman.d/gnupg/gpg.conf
 
 _copy_files(){
     local config_file
@@ -103,6 +102,16 @@ _copy_files(){
     fi
     echo "nvidia_card=$card"     >> $nvidia_file
     echo "nvidia_driver=$driver" >> $nvidia_file
+
+
+    # /etc/os-release /etc/lsb-release removed, using sed now at chrooted script
+    # /etc/default/grub # Removed from above since cleaner scripts are moved to last step at calamares
+    # https://forum.endeavouros.com/t/calamares-3-2-24-needs-testing/4941/37
+    # /etc/pacman.d/hooks/lsb-release.hook
+    # /etc/pacman.d/hooks/os-release.hook
 }
 
 _copy_files
+
+# For chrooted commands edit the script bellow directly
+arch_chroot "/usr/bin/chrooted_cleaner_script.sh"
