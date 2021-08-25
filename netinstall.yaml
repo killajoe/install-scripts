@@ -195,12 +195,12 @@
   description: "XFCE4 - lightweight desktop fast and low on system resources, visually appealing and user friendly."
   hidden: false
   selected: false
+  expanded: true
   critical: true
   subgroups:
       - name: "EndeavourOS theming"
         description: "EndeavourOS XFCE4 theming (unselect to install vanilla)"
         selected: false
-        expanded: true
         critical: false
         packages:
             - endeavouros-skel-xfce4
@@ -312,12 +312,12 @@
   description: "i3 tiling window manager, primarily targeted at developers and advanced users."
   hidden: false
   selected: false
+  expanded: true
   critical: true
   subgroups:
       - name: "EndeavourOS theming"
         description: "EndeavourOS XFCE4 theming (unselect to install vanilla)"
         selected: false
-        expanded: true
         critical: false
         packages:
           - endeavouros-skel-i3wm
