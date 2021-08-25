@@ -200,6 +200,7 @@
       - name: "EndeavourOS theming"
         description: "EndeavourOS XFCE4 theming (unselect to install vanilla)"
         selected: false
+        expanded: true
         critical: false
         packages:
             - endeavouros-skel-xfce4
@@ -316,6 +317,7 @@
       - name: "EndeavourOS theming"
         description: "EndeavourOS XFCE4 theming (unselect to install vanilla)"
         selected: false
+        expanded: true
         critical: false
         packages:
           - endeavouros-skel-i3wm
